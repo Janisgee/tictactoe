@@ -9,14 +9,23 @@
     <title>Tic Tac Toe</title>
   </head>
   <body>
+    <h1>❌ Tic Tac Toe ⭕</h1>
     <div class="container">
       <div class="heading">
-        <div>Medium</div>
-        <div>HyperLink</div>
+        <div>
+          <i class="fa-solid fa-print fa-2x" onclick="window.print()"></i>
+        </div>
+        <div><i class="fa-brands fa-square-github fa-3x"></i></div>
       </div>
-      <div class="score">
-        <button class="btn-cross">0</button>
-        <button class="btn-circle">0</button>
+      <div class="scores">
+        <button class="btn-cross">
+          <i class="fa-regular fa-circle fa-sm"></i>
+          <span>0</span>
+        </button>
+        <button class="btn-circle">
+          <i class="fa-solid fa-xmark fa-lg"></i>
+          <span>0</span>
+        </button>
       </div>
       <p class="gameInfo">Start game or select player</p>
       <!-- TODO: Use underlay for lines (2 layers) -->
@@ -28,24 +37,36 @@
           <div class="vertical2"></div>
         </div>
         <div class="row">
-          <div class="box box-1">1</div>
-          <div class="box box-2">2</div>
-          <div class="box box-3">3</div>
+          <div class="box box-1">
+            <i class="fa-regular fa-circle fa-2xs tic-circle"></i>
+          </div>
+          <div class="box box-2">
+            <i class="fa-solid fa-xmark fa-sm tic-cross"></i>
+          </div>
+          <div class="box box-3"></div>
         </div>
         <div class="horizontal1"></div>
         <div class="row">
-          <div class="box box-4">4</div>
-          <div class="box box-5">5</div>
-          <div class="box box-6">6</div>
+          <div class="box box-4"></div>
+          <div class="box box-5"></div>
+          <div class="box box-6"></div>
         </div>
         <div class="horizontal2"></div>
         <div class="row">
-          <div class="box box-7">7</div>
-          <div class="box box-8">8</div>
-          <div class="box box-9">9</div>
+          <div class="box box-7"></div>
+          <div class="box box-8"></div>
+          <div class="box box-9"></div>
         </div>
       </div>
-      <button class="btn-restart">Restart game</button>
+      <button class="btn-restart">Restart Game</button>
     </div>
+    <footer>
+      This project was coded by Janis Chan and is open-sourced on GitHub and
+      hosted on Netlify.
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/a2bb2c27f1.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
