@@ -19,24 +19,33 @@
         <button class="btn-circle">0</button>
       </div>
       <p class="gameInfo">Start game or select player</p>
+      <!-- TODO: Use underlay for lines (2 layers) -->
+
+      <!-- TODO: Use display grid with 9 boxes instead of divide to 3 rows -->
       <div class="tictactoe">
+        <div class="lines">
+          <div class="vertical1"></div>
+          <div class="vertical2"></div>
+        </div>
         <div class="row">
           <div class="box box-1">1</div>
           <div class="box box-2">2</div>
           <div class="box box-3">3</div>
         </div>
+        <div class="horizontal1"></div>
         <div class="row">
           <div class="box box-4">4</div>
           <div class="box box-5">5</div>
           <div class="box box-6">6</div>
         </div>
+        <div class="horizontal2"></div>
         <div class="row">
           <div class="box box-7">7</div>
           <div class="box box-8">8</div>
           <div class="box box-9">9</div>
         </div>
       </div>
-      <button>Restart game</button>
+      <button class="btn-restart">Restart game</button>
     </div>
   </body>
 </html>
