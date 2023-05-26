@@ -4,19 +4,88 @@ let turn;
 let circleScore = 0;
 let crossScore = 0;
 
+boxes = document.querySelectorAll('.box');
 const overlay = document.querySelector('.overlay');
 const hidden = document.querySelector('.hidden');
 
 const gameResult = document.querySelector('.game-result');
 
+const gameInfo = document.querySelector('.gameInfo');
+
+const selectRadio = document.querySelector('.select-radio');
+const playerBtn = document.querySelectorAll('input[name="player"]');
+
 const btnRestart = document.querySelector('.btn-restart');
 const btnReset = document.querySelector('.btn-reset-score');
+
+const circleBoard = document.querySelector('.btn-circle');
+const crossBoard = document.querySelector('.btn-cross');
 
 const crossScoreDisplay = document.querySelector('.cross-score');
 const circleScoreDisplay = document.querySelector('.circle-score');
 
+const disableSelect = function () {
+  for (const selectBtn of playerBtn) {
+    if (selectBtn.checked === false) {
+      selectBtn.disabled = true;
+    }
+  }
+};
+
+const selectRandom = function () {
+  let random = Math.round(Math.random());
+  console.log(random);
+  setTimeout(function () {
+    if (turn === 0) {
+      circleBoard.classList.add('turn');
+      crossBoard.classList.remove('turn');
+      gameInfo.innerHTML = 'Circle ⭕ Turn First !';
+    } else if (turn === 1) {
+      circleBoard.classList.remove('turn');
+      crossBoard.classList.add('turn');
+      gameInfo.innerHTML = 'Cross ❌ Turn First !';
+    }
+  }, 1000);
+  return (turn = random);
+};
+
+const selectPlayer = function () {
+  selectRadio.addEventListener('change', function () {
+    for (const startMethod of playerBtn) {
+      if (startMethod.checked) {
+        console.log(startMethod.value);
+        if (startMethod.value === 'circle') {
+          gameInfo.innerHTML = 'Circle ⭕ Turn First !';
+          circleBoard.classList.add('turn');
+          crossBoard.classList.remove('turn');
+          return (turn = 0);
+        }
+        if (startMethod.value === 'cross') {
+          gameInfo.innerHTML = 'Cross ❌ Turn First !';
+          circleBoard.classList.remove('turn');
+          crossBoard.classList.add('turn');
+          return (turn = 1);
+        }
+        if (startMethod.value === 'random') {
+          gameInfo.innerHTML = 'Random Player !';
+
+          return selectRandom();
+        }
+      }
+    }
+  });
+};
+
 const restart = function () {
-  console.log('restart');
+  circleBoard.classList.remove('turn');
+  circleBoard.classList.add('turn');
+
+  crossBoard.classList.remove('turn');
+  document.querySelector('#circle').checked = true;
+  document.getElementById('circle').disabled = false;
+  document.getElementById('cross').disabled = false;
+  document.getElementById('random').disabled = false;
+  gameInfo.innerHTML = 'Start game with circle turn first or select player';
   boxes.forEach((box) => (box.innerHTML = ''));
   initialize();
 };
@@ -32,16 +101,15 @@ btnReset.addEventListener('click', resetScore);
 const initialize = function () {
   data = [[], [], []];
   turn = 0;
+  selectPlayer();
+
   let x = 0;
   let y = 0;
-  let i = 0;
-
-  boxes = document.querySelectorAll('.box');
 
   boxes.forEach((box) => {
     box.x = x;
     box.y = y;
-    box.i = i++;
+    turn = 0;
     data[y][x] = 0;
     x++;
     if (x > 2) {
@@ -125,7 +193,7 @@ const result = function (win) {
     setTimeout(() => {
       overlay.classList.toggle('hidden');
       closeOverlay();
-      gameResult.innerHTML = 'Cross ❌ win !';
+      gameResult.innerHTML = gameInfo.innerHTML = 'Cross ❌ win !';
       crossScoreDisplay.innerHTML = crossScore += 1;
     }, 500);
   }
@@ -136,7 +204,7 @@ const result = function (win) {
     setTimeout(() => {
       overlay.classList.toggle('hidden');
       closeOverlay();
-      gameResult.innerHTML = 'Circle ⭕ win !';
+      gameResult.innerHTML = gameInfo.innerHTML = 'Circle ⭕ win !';
       circleScoreDisplay.innerHTML = circleScore += 1;
     }, 500);
   }
@@ -144,7 +212,7 @@ const result = function (win) {
     setTimeout(() => {
       overlay.classList.toggle('hidden');
       closeOverlay();
-      gameResult.innerHTML = '🛎️ Draw game !';
+      gameResult.innerHTML = gameInfo.innerHTML = '🛎️ Draw game !';
     }, 500);
   }
 };
@@ -155,9 +223,17 @@ const clickedBox = function (event) {
     if (turn % 2 === 0) {
       box.innerHTML = "<i class='fa-regular fa-circle fa-2xs tic-circle'></i>";
       data[box.y][box.x] = PLAYER_1;
+      circleBoard.classList.remove('turn');
+      crossBoard.classList.add('turn');
+      gameInfo.innerHTML = 'Cross Turn';
+      disableSelect();
     } else {
       box.innerHTML = "<i class='fa-solid fa-xmark fa-sm tic-cross'></i>";
       data[box.y][box.x] = PLAYER_2;
+      circleBoard.classList.add('turn');
+      crossBoard.classList.remove('turn');
+      gameInfo.innerHTML = 'Circle Turn';
+      disableSelect();
     }
     turn++;
   }

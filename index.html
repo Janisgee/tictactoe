@@ -17,8 +17,27 @@
         </div>
         <div><i class="fa-brands fa-square-github fa-3x"></i></div>
       </div>
+      <div class="select-player">
+        <br /><b> Choose Player Start First</b><br />
+        <div class="select-radio">
+          <input
+            type="radio"
+            name="player"
+            id="circle"
+            value="circle"
+            checked
+          />
+          Circle
+          <br />
+          <input type="radio" name="player" id="cross" value="cross" />
+          Cross
+          <br />
+          <input type="radio" name="player" id="random" value="random" /> Random
+          <br />
+        </div>
+      </div>
       <div class="scores">
-        <button class="btn-circle">
+        <button class="btn-circle turn">
           <i class="fa-regular fa-circle fa-sm score-image"></i>
           <span class="circle-score">0</span>
         </button>
@@ -27,7 +46,7 @@
           <span class="cross-score">0</span>
         </button>
       </div>
-      <p class="gameInfo">Start game or select player</p>
+      <p class="gameInfo">Start game with circle turn first or select player</p>
 
       <div class="overlay hidden">
         <div class="game-result highLight">Cross ❌ win !</div>
@@ -69,6 +88,7 @@
       src="https://kit.fontawesome.com/a2bb2c27f1.js"
       crossorigin="anonymous"
     ></script>
-    <script src="tictactoe.js"></script>
+    <script type="module" src="./js/controller.js"></script>
+    <!-- <script type="module" src="./js/old.js"></script> -->
   </body>
 </html>
