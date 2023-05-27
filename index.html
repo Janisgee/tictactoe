@@ -13,9 +13,18 @@
     <div class="container">
       <div class="heading">
         <div>
-          <i class="fa-solid fa-print fa-2x" onclick="window.print()"></i>
+          <i
+            class="top-btn fa-solid fa-print fa-2x"
+            onclick="window.print()"
+          ></i>
         </div>
-        <div><i class="fa-brands fa-square-github fa-3x"></i></div>
+
+        <div>
+          <a
+            href="https://github.com/Janisgee/tictactoe"
+            class="top-btn fa-brands fa-square-github fa-3x"
+          ></a>
+        </div>
       </div>
       <div class="select-player">
         <br /><b> Choose Player Start First</b><br />
@@ -32,10 +41,12 @@
           <input type="radio" name="player" id="cross" value="cross" />
           Cross
           <br />
-          <input type="radio" name="player" id="random" value="random" /> Random
+          <input type="radio" name="player" id="random" value="random" />
+          Random
           <br />
         </div>
       </div>
+
       <div class="scores">
         <button class="btn-circle turn">
           <i class="fa-regular fa-circle fa-sm score-image"></i>
@@ -53,26 +64,31 @@
       </div>
 
       <div class="tictactoe">
+        <div class="square-box">
+          <div class="row">
+            <div class="box box-1"></div>
+            <div class="box box-2"></div>
+            <div class="box box-3"></div>
+          </div>
+          <!-- <div class="horizontal1"></div> -->
+          <div class="row">
+            <div class="box box-4"></div>
+            <div class="box box-5"></div>
+            <div class="box box-6"></div>
+          </div>
+          <!-- <div class="horizontal2"></div> -->
+          <div class="row">
+            <div class="box box-7"></div>
+            <div class="box box-8"></div>
+            <div class="box box-9"></div>
+          </div>
+        </div>
         <div class="lines">
           <div class="vertical1"></div>
           <div class="vertical2"></div>
-        </div>
-        <div class="row">
-          <div class="box box-1"></div>
-          <div class="box box-2"></div>
-          <div class="box box-3"></div>
-        </div>
-        <div class="horizontal1"></div>
-        <div class="row">
-          <div class="box box-4"></div>
-          <div class="box box-5"></div>
-          <div class="box box-6"></div>
-        </div>
-        <div class="horizontal2"></div>
-        <div class="row">
-          <div class="box box-7"></div>
-          <div class="box box-8"></div>
-          <div class="box box-9"></div>
+
+          <div class="horizontal1"></div>
+          <div class="horizontal2"></div>
         </div>
       </div>
       <div class="btns-reset-and-restart">
@@ -81,6 +97,7 @@
       </div>
     </div>
     <footer>
+      <br />
       This project was coded by Janis Chan and is open-sourced on GitHub and
       hosted on Netlify.
     </footer>
