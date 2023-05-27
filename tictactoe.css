@@ -280,6 +280,14 @@ footer {
   transform: translateY(4px);
 }
 
+.netlify-btn {
+  color: white;
+  cursor: pointer;
+}
+.netlify-btn:visited {
+  color: white;
+}
+
 @media screen and (min-width: 1500px) {
   .select-player {
     font-size: 20px;
@@ -405,7 +413,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 600px) and (max-width: 500px) {
+@media screen and (max-width: 600px) and (min-width: 500px) {
   :root {
     --tictactoe-line-color: 1.5px solid #ffffff;
   }
